@@ -7,7 +7,20 @@ spring:
     import: optional:configserver:http://localhost:8888
   profile:
     active: dev
-
+  kafka:
+    topic:
+      name: currency_exchange_topic
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: forex
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#      properties:
+#        spring:
+#          json:
+#            trusted:
+#              packages: *
 #eureka:
 #  instance:
 #    prefer-ip-address: true
